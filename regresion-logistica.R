@@ -23,7 +23,9 @@ summary_modelo <- summary(modelo_logistico)
 y_pred <- predict(modelo_logistico, type = "response") # probabilidades predichas
 
 # Clasificación de predicciones: convertir probabilidades a clases (umbral 0.5)
-y_pred_class <- ifelse(y_pred > 0.5, 1, 0)
+
+umbral <- 0.3
+y_pred_class <- ifelse(y_pred > umbral, 1, 0)
 
 # Matriz de confusión
 table(Predicted = y_pred_class, Actual = mtcars$am)
